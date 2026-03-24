@@ -17,6 +17,7 @@ const FreeContents = lazy(() => import("../pages/freecontent"));
 const Certificates = lazy(() => import("../pages/certificates"));
 const Videos = lazy(() => import("../pages/videos"));
 const Contact = lazy(() => import("../pages/contact"));
+const Recommendations = lazy(() => import("../pages/recommendations"));
 
 export default function HomePage() {
   const { isLoading, error, data } = useUserdata();
@@ -39,6 +40,7 @@ export default function HomePage() {
         {data?.contentsTitle && data.contentsTitle.length > 0 && <FreeContents />}
         {data?.videos && data.videos.length > 0 && <Videos />}
         {data?.education && data.education.length > 0 && <Education />}
+        <Recommendations />
         <Contact />
         <Footer/>
       </Suspense>
