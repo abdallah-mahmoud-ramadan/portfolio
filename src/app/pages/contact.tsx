@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/shared/components/firebase";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [email, setEmail] = useState("");
@@ -39,6 +40,20 @@ const Contact = () => {
       await updateDoc(userDocRef, {
         contactMessage: arrayUnion(newMessage),
       });
+
+      const templateParams = {
+        name: "Portfolio Contact",
+        email: email,
+        message: message,
+        time: new Date().toLocaleString(),
+      };
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      );
 
       alert("Message sent successfully! ✅");
       setEmail("");
