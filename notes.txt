@@ -4,3 +4,6 @@ npm run dev
 
 deploy into github
 npm run deploy
+
+Download admin apk
+https://drive.google.com/drive/folders/1fMbrUiQzseBA_0JS6H0Z-q6tU4paZjpx
