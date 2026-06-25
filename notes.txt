@@ -3,4 +3,6 @@ run react command
 npm run dev
 
 deploy into github
+npm run build
 npm run deploy
+
